@@ -1,4 +1,4 @@
-﻿using PartialViewExample.Models;
+﻿using PartialViewExample.SomeSharedLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +9,12 @@ namespace PartialViewExample.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
-        public ActionResult Index()
+        public ActionResult Index(Boolean isAdmin = false)
         {
-            ViewBag.Menu = new BootstrapMenu() { HeaderText = "Hello World" };
+            if (isAdmin)
+                ViewBag.Menu = new DropdownManager().GetAdmin();
+            else
+                ViewBag.Menu = new DropdownManager().GetStandard();
             return View();
         }
     }

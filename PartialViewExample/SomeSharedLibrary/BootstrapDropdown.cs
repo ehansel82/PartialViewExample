@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace PartialViewExample.Models
+namespace PartialViewExample.SomeSharedLibrary
 {
-    public class BootstrapMenu
+    public class BootstrapDropdown
     {
         public string HeaderText { get; set; }
-        public List<MenuItems> Items { get; set; }
+        public List<DropdownItem> Items { get; set; }
     }
 }

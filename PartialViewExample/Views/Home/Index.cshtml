@@ -1,4 +1,5 @@
-﻿@using PartialViewExample.Models;
+﻿@using PartialViewExample.SomeSharedLibrary;
+@using PartialViewExample.HtmlHelpers;
 @{
     Layout = null;
 }
@@ -12,10 +13,18 @@
     @Scripts.Render("~/bundles/js")
 </head>
 <body>
-    @Html.Partial("~/Views/Shared/BootStrapMenu.cshtml", (BootstrapMenu) ViewBag.Menu)
     <h1>This is a test</h1>
     <div> 
-
+        <ul>
+         <li><a href="/home/index?isAdmin=true">Login as admin</a><span>(Adds new location to dropdown)</span></li>
+         <li><a href="~/webform.aspx">Click here for webform</a></li>
+        </ul>
     </div>
+    <h3>This dropdown is from an MVC partial view.</h3>
+    @Html.Partial("~/Views/Shared/BootStrapMenu.cshtml", (BootstrapDropdown)ViewBag.Menu)
+    <h3>This dropdown is from a webforms user control.</h3>
+    @Html.Partial("~/WebformDropdown.ascx");
+    <h3>This dropdown is from a custom HTML helper.</h3>
+    @Html.BootstrapDropdown((BootstrapDropdown)ViewBag.Menu)
 </body>
 </html>
